@@ -13,6 +13,29 @@
       background-position: center;
       color: #fff;
     }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav button {
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    nav button:hover {
+      background-color: #fff;
+      color: #000;
+    }
     .container {
       padding: 40px 20px;
       background-color: rgba(0, 0, 0, 0.7);
@@ -48,17 +71,16 @@
       text-align: center;
       color: #f0c040;
     }
-    a.back {
-      display: block;
-      text-align: center;
-      margin: 20px auto;
-      font-size: 18px;
-      color: #f0c040;
-      text-decoration: none;
-    }
   </style>
 </head>
 <body>
+  <nav>
+    <button onclick="location.href='index.html'">Home</button>
+    <button onclick="location.href='skills.html'">Skills</button>
+    <button onclick="alert('Projects section coming soon.')">Project</button>
+    <button onclick="alert('Resume section coming soon.')">Resume</button>
+  </nav>
+
   <div class="container">
     <h1>Skills</h1>
     <div class="skills-grid">
@@ -83,7 +105,6 @@
         <p>Excel, Jupyter Notebook, Git</p>
       </div>
     </div>
-    <a href="index.html" class="back">← Back to Home</a>
   </div>
 </body>
 </html>
