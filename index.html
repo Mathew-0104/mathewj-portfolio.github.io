@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-image: url('https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/BG.jpg?raw=true');
+      background-image: url('https://raw.githubusercontent.com/Mathew-0104/MathewJ.github.io/main/BG.jpg');
       background-size: cover;
       background-position: center;
       color: #fff;
@@ -83,7 +83,7 @@
 <body>
   <nav>
     <button onclick="scrollToSection('home')">Home</button>
-    <button onclick="alert('Skills section coming soon.')">Skills</button>
+    <button onclick="location.href='skills.html'">Skills</button>
     <button onclick="alert('Projects section coming soon.')">Project</button>
     <button onclick="alert('Resume section coming soon.')">Resume</button>
   </nav>
@@ -101,7 +101,7 @@
         </p>
       </div>
       <div class="profile-pic">
-        <img src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/Profile_Pic.jpg?raw=true" alt="Mathew J Profile Picture" />
+        <img src="https://raw.githubusercontent.com/Mathew-0104/MathewJ.github.io/main/Profile_Pic.jpg" alt="Mathew J Profile Picture" />
       </div>
     </div>
   </section>
@@ -109,7 +109,9 @@
   <script>
     function scrollToSection(id) {
       const section = document.getElementById(id);
-      section.scrollIntoView({ behavior: 'smooth' });
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   </script>
 </body>
