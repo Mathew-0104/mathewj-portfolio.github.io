@@ -31,10 +31,17 @@
       cursor: pointer;
       font-size: 16px;
       border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     nav button:hover {
       background-color: #fff;
       color: #000;
+    }
+    nav button img {
+      width: 20px;
+      height: 20px;
     }
     .container {
       padding: 40px 20px;
@@ -75,10 +82,22 @@
 </head>
 <body>
   <nav>
-    <button onclick="location.href='index.html'">Home</button>
-    <button onclick="location.href='skills.html'">Skills</button>
-    <button onclick="alert('Projects section coming soon.')">Project</button>
-    <button onclick="alert('Resume section coming soon.')">Resume</button>
+    <button onclick="location.href='index.html'">
+      <img src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/home.png?raw=true" alt="Home Icon" />
+      Home
+    </button>
+    <button onclick="location.href='skills.html'">
+      <img src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/skills.png?raw=true" alt="Skills Icon" />
+      Skills
+    </button>
+    <button onclick="alert('Projects section coming soon.')">
+      <img src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/project.png?raw=true" alt="Project Icon" />
+      Project
+    </button>
+    <button onclick="alert('Resume section coming soon.')">
+      <img src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/resume.png?raw=true" alt="Resume Icon" />
+      Resume
+    </button>
   </nav>
 
   <div class="container">
