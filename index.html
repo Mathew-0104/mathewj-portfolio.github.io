@@ -1,477 +1,630 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Mathew J - Data Analyst</title>
+<title>Mathew J | Data Analyst Portfolio</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    html {
-      scroll-behavior: smooth;
-    }
+/* GENERAL */
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-image: url('https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/BGAI2.gif?raw=true');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #fff;
-      min-height: 100vh;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    /* Desktop / Mobile Switch */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: white;
+    min-height: 100vh;
+}
+
+/* VIEW SWITCHER */
+
+.view-switcher {
+    position: relative;
+    width: fit-content;
+    margin: 10px auto 15px;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+
+    background: rgba(0,0,0,0.95);
+    padding: 6px;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.view-switcher button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.view-switcher button:hover,
+.view-switcher button.active {
+    background: #f0c040;
+    color: black;
+    font-weight: bold;
+}
+
+/* PORTFOLIO CONTAINER */
+
+#portfolioPreview {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+
+    background-image: url('https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/BGAI2.gif?raw=true');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    transition: width 0.3s ease;
+}
+
+/* DESKTOP VIEW */
+
+body.desktop-mode #portfolioPreview {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+}
+
+/* MOBILE PREVIEW VIEW */
+
+body.mobile-mode {
+    background: #252525;
+    padding-bottom: 30px;
+}
+
+body.mobile-mode #portfolioPreview {
+    width: 390px;
+    max-width: calc(100% - 20px);
+    min-height: 844px;
+
+    border: 7px solid #444;
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    background-attachment: scroll;
+
+    box-shadow: 0 0 25px rgba(0,0,0,0.8);
+}
+
+/* NAVIGATION */
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    background: rgba(0,0,0,0.8);
+    padding: 15px 10px;
+
+    position: relative;
+    z-index: 10;
+}
+
+nav button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+
+    padding: 10px 20px;
+    cursor: pointer;
+
+    font-size: 15px;
+    border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background: white;
+    color: black;
+}
+
+nav button img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* HOME SECTION */
+
+.hero {
+    min-height: calc(100vh - 60px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 30px;
+
+    background: rgba(0,0,0,0.48);
+}
+
+.about {
+    max-width: 1100px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 60px;
+    margin: auto;
+}
+
+.about-text {
+    flex: 2;
+}
+
+.about-text h1 {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.about-text h2 {
+    font-size: 28px;
+    color: #f0c040;
+    margin-bottom: 25px;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* PROFILE PICTURE */
+
+.profile-pic {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-pic img {
+    width: 230px;
+    height: 230px;
+
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+
+    box-shadow: 0 0 25px rgba(255,255,255,0.3);
+}
+
+/* PROJECTS / RESUME */
+
+.content-section {
+    min-height: 100vh;
+    padding: 100px 30px;
+
+    text-align: center;
+    background: rgba(0,0,0,0.85);
+}
+
+.content-section h1 {
+    font-size: 38px;
+    color: #f0c040;
+    margin-bottom: 25px;
+}
+
+.content-section p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+
+footer {
+    background: rgba(0,0,0,0.95);
+    text-align: center;
+    padding: 25px;
+    color: #ccc;
+}
+
+/* MOBILE PREVIEW STYLES */
+
+body.mobile-mode #portfolioPreview nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    padding: 12px 5px;
+}
+
+body.mobile-mode #portfolioPreview nav button {
+    padding: 8px 9px;
+    font-size: 12px;
+    gap: 4px;
+    margin: 0;
+}
+
+body.mobile-mode #portfolioPreview nav button img {
+    width: 15px;
+    height: 15px;
+}
+
+body.mobile-mode #portfolioPreview .hero {
+    min-height: 650px;
+    padding: 35px 15px;
+}
+
+body.mobile-mode #portfolioPreview .about {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 25px;
+}
+
+body.mobile-mode #portfolioPreview .profile-pic img {
+    width: 145px;
+    height: 145px;
+}
+
+body.mobile-mode #portfolioPreview .about-text h1 {
+    font-size: 30px;
+}
+
+body.mobile-mode #portfolioPreview .about-text h2 {
+    font-size: 21px;
+}
+
+body.mobile-mode #portfolioPreview .about-text p {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+body.mobile-mode #portfolioPreview .content-section {
+    min-height: 650px;
+    padding: 65px 15px;
+}
+
+body.mobile-mode #portfolioPreview .content-section h1 {
+    font-size: 28px;
+}
+
+body.mobile-mode #portfolioPreview .content-section p {
+    font-size: 15px;
+}
+
+body.mobile-mode #portfolioPreview footer {
+    font-size: 13px;
+}
+
+/* REAL MOBILE SCREEN RESPONSIVENESS */
+
+@media screen and (max-width: 600px) {
 
     .view-switcher {
-      position: fixed;
-      top: 12px;
-      right: 20px;
-      z-index: 2000;
-      display: flex;
-      gap: 5px;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 5px;
-      border: 1px solid #fff;
-      border-radius: 8px;
+        position: relative;
+        margin: 10px auto 15px;
     }
-
-    .view-switcher button {
-      background: transparent;
-      color: white;
-      border: none;
-      padding: 9px 14px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-
-    .view-switcher button:hover,
-    .view-switcher button.active {
-      background: #f0c040;
-      color: #000;
-      font-weight: bold;
-    }
-
-    /* Navigation */
 
     nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 12px 10px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+        position: relative;
+        top: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        padding: 12px 8px;
     }
 
     nav button {
-      background: transparent;
-      border: 1px solid #fff;
-      color: #fff;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
-
-    nav button:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    nav button img {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-    }
-
-    /* Home Section */
-
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: calc(100vh - 60px);
-      padding: 40px 20px;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .about {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 50px;
-      max-width: 1100px;
-      width: 100%;
-      margin: auto;
-    }
-
-    .about-text {
-      flex: 2;
-    }
-
-    .about-text h1 {
-      margin: 0 0 10px;
-      font-size: 46px;
-    }
-
-    .about-text h2 {
-      margin: 0 0 20px;
-      font-size: 28px;
-      color: #f0c040;
-    }
-
-    .about-text p {
-      font-size: 18px;
-      line-height: 1.8;
-    }
-
-    /* Profile Picture */
-
-    .profile-pic {
-      flex: 1;
-      text-align: center;
-    }
-
-    .profile-pic img {
-      width: 230px;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      box-shadow: 0 0 25px rgba(255,255,255,0.3);
-    }
-
-    /* Other Sections */
-
-    .content-section {
-      min-height: 100vh;
-      padding: 100px 30px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.75);
-    }
-
-    .content-section h1 {
-      color: #f0c040;
-      font-size: 36px;
-    }
-
-    /* Footer */
-
-    footer {
-      background: rgba(0,0,0,0.85);
-      padding: 20px;
-      text-align: center;
-      color: #ccc;
-    }
-
-    /* MOBILE VIEW */
-
-    body.mobile-view nav {
-      gap: 5px;
-      padding: 10px 5px;
-    }
-
-    body.mobile-view nav button {
-      padding: 8px 10px;
-      margin: 2px;
-      font-size: 13px;
-    }
-
-    body.mobile-view nav button img {
-      width: 16px;
-      height: 16px;
-    }
-
-    body.mobile-view .hero {
-      min-height: calc(100vh - 60px);
-      padding: 30px 15px;
-    }
-
-    body.mobile-view .about {
-      flex-direction: column-reverse;
-      text-align: center;
-      gap: 20px;
-    }
-
-    body.mobile-view .profile-pic img {
-      width: 150px;
-      height: 150px;
-    }
-
-    body.mobile-view .about-text h1 {
-      font-size: 28px;
-    }
-
-    body.mobile-view .about-text h2 {
-      font-size: 20px;
-    }
-
-    body.mobile-view .about-text p {
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    body.mobile-view .content-section {
-      padding: 60px 15px;
-    }
-
-    body.mobile-view .view-switcher {
-      top: 10px;
-      right: 10px;
-    }
-
-    /* Actual small screen responsiveness */
-
-    @media (max-width: 600px) {
-      nav {
-        padding-top: 65px;
-      }
-
-      nav button {
-        padding: 8px 10px;
+        padding: 9px 10px;
         font-size: 13px;
-        margin: 2px;
-      }
+        margin: 0;
+    }
 
-      .about {
+    body:not(.mobile-mode) .about {
         flex-direction: column-reverse;
         text-align: center;
-        gap: 20px;
-      }
-
-      .profile-pic img {
-        width: 150px;
-        height: 150px;
-      }
-
-      .about-text h1 {
-        font-size: 30px;
-      }
-
-      .about-text h2 {
-        font-size: 21px;
-      }
-
-      .about-text p {
-        font-size: 15px;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 40px 15px;
-      }
+        gap: 25px;
     }
 
-  </style>
+    body:not(.mobile-mode) .profile-pic img {
+        width: 150px;
+        height: 150px;
+    }
+
+    body:not(.mobile-mode) .about-text h1 {
+        font-size: 30px;
+    }
+
+    body:not(.mobile-mode) .about-text h2 {
+        font-size: 21px;
+    }
+
+    body:not(.mobile-mode) .about-text p {
+        font-size: 15px;
+    }
+
+    body:not(.mobile-mode) .hero {
+        min-height: auto;
+        padding: 45px 15px;
+    }
+
+}
+
+</style>
+
 </head>
 
-<body>
+<body class="desktop-mode">
 
-  <!-- DESKTOP / MOBILE SWITCH -->
+<!-- DESKTOP / MOBILE SWITCH BUTTON -->
 
-  <div class="view-switcher">
+<div class="view-switcher">
 
     <button id="desktopBtn"
             class="active"
             onclick="setView('desktop')">
-      💻 Desktop
+
+        💻 Desktop
+
     </button>
 
     <button id="mobileBtn"
             onclick="setView('mobile')">
-      📱 Mobile
+
+        📱 Mobile
+
     </button>
 
-  </div>
+</div>
 
 
-  <!-- NAVIGATION -->
+<!-- PORTFOLIO START -->
 
-  <nav>
-
-    <button onclick="scrollToSection('home')">
-      <img src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/home.png?raw=true"
-           alt="Home">
-      Home
-    </button>
-
-    <button onclick="location.href='skills.html'">
-      <img src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/skills.png?raw=true"
-           alt="Skills">
-      Skills
-    </button>
-
-    <button onclick="scrollToSection('projects')">
-      <img src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/project.png?raw=true"
-           alt="Projects">
-      Projects
-    </button>
-
-    <button onclick="scrollToSection('resume')">
-      <img src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/resume.png?raw=true"
-           alt="Resume">
-      Resume
-    </button>
-
-  </nav>
+<div id="portfolioPreview">
 
 
-  <!-- HOME SECTION -->
+    <!-- NAVIGATION -->
 
-  <section id="home" class="hero">
+    <nav>
 
-    <div class="about">
+        <button onclick="scrollToSection('home')">
 
-      <div class="about-text">
+            <img
+            src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/home.png?raw=true"
+            alt="Home">
 
-        <h1>Mathew J</h1>
+            Home
 
-        <h2>Data Analyst</h2>
+        </button>
+
+
+        <button onclick="location.href='skills.html'">
+
+            <img
+            src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/skills.png?raw=true"
+            alt="Skills">
+
+            Skills
+
+        </button>
+
+
+        <button onclick="scrollToSection('projects')">
+
+            <img
+            src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/project.png?raw=true"
+            alt="Projects">
+
+            Projects
+
+        </button>
+
+
+        <button onclick="scrollToSection('resume')">
+
+            <img
+            src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/resume.png?raw=true"
+            alt="Resume">
+
+            Resume
+
+        </button>
+
+    </nav>
+
+
+    <!-- HOME -->
+
+    <section id="home" class="hero">
+
+        <div class="about">
+
+            <div class="about-text">
+
+                <h1>Mathew J</h1>
+
+                <h2>Data Analyst</h2>
+
+                <p>
+
+                    Hi, I'm Mathew — a passionate Data Analyst
+                    with 10+ years of experience turning raw
+                    data into actionable insights.
+
+                    I specialize in data visualization,
+                    statistical analysis, and building
+                    interactive dashboards.
+
+                    I love helping businesses make smarter
+                    decisions through data.
+
+                    <br><br>
+
+                    Let's explore the story behind the numbers.
+
+                </p>
+
+            </div>
+
+
+            <div class="profile-pic">
+
+                <img
+                src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/Profile_Pic.jpg?raw=true"
+                alt="Mathew J Profile Picture">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects" class="content-section">
+
+        <h1>My Projects</h1>
+
+        <p>Welcome to my project portfolio.</p>
 
         <p>
-          Hi, I'm Mathew — a passionate Data Analyst with
-          10+ years of experience turning raw data into
-          actionable insights.
-
-          I specialize in data visualization, statistical
-          analysis, and building interactive dashboards.
-
-          I love helping businesses make smarter decisions
-          through data.
-          <br><br>
-          Let's explore the story behind the numbers.
+            Python | Power BI | MySQL | Advanced Excel
         </p>
 
-      </div>
+        <p>
+            Data Analytics | CRM Analytics | Sales Analytics
+        </p>
+
+    </section>
 
 
-      <div class="profile-pic">
+    <!-- RESUME -->
 
-        <img
-          src="https://github.com/Mathew-0104/mathewj-portfolio.github.io/blob/main/Profile_Pic.jpg?raw=true"
-          alt="Mathew J Profile Picture">
+    <section id="resume" class="content-section">
 
-      </div>
+        <h1>My Resume</h1>
 
-    </div>
+        <p>
+            Explore my professional experience,
+            technical skills and achievements.
+        </p>
 
-  </section>
+        <p>
+            Resume will be updated soon.
+        </p>
 
-
-  <!-- PROJECTS SECTION -->
-
-  <section id="projects" class="content-section">
-
-    <h1>My Projects</h1>
-
-    <p>
-      Welcome to my project portfolio.
-    </p>
-
-    <p>
-      Data Analytics | Power BI | Python | SQL | Excel
-    </p>
-
-  </section>
+    </section>
 
 
-  <!-- RESUME SECTION -->
+    <!-- FOOTER -->
 
-  <section id="resume" class="content-section">
+    <footer>
 
-    <h1>My Resume</h1>
+        <p>© 2026 Mathew J | Data Analyst</p>
 
-    <p>
-      Explore my professional experience,
-      technical skills and achievements.
-    </p>
-
-    <p>
-      Resume will be updated soon.
-    </p>
-
-  </section>
+    </footer>
 
 
-  <!-- FOOTER -->
+</div>
 
-  <footer>
-
-    <p>
-      © 2026 Mathew J | Data Analyst
-    </p>
-
-  </footer>
+<!-- PORTFOLIO END -->
 
 
-  <!-- JAVASCRIPT -->
+<script>
 
-  <script>
+/* NAVIGATION SCROLL */
 
-    // Navigation Scroll
+function scrollToSection(id) {
 
-    function scrollToSection(id) {
+    const section = document.querySelector(
+        '#portfolioPreview #' + id
+    );
 
-      const section = document.getElementById(id);
-
-      if (section) {
+    if (section) {
 
         section.scrollIntoView({
-          behavior: 'smooth'
+            behavior: 'smooth',
+            block: 'start'
         });
-
-      }
 
     }
 
+}
 
-    // Desktop / Mobile Switch
 
-    function setView(view) {
+/* DESKTOP / MOBILE SWITCH */
 
-      const desktopBtn =
+function setView(view) {
+
+    const desktopBtn =
         document.getElementById('desktopBtn');
 
-      const mobileBtn =
+    const mobileBtn =
         document.getElementById('mobileBtn');
 
 
-      if (view === 'mobile') {
+    document.body.classList.remove(
+        'desktop-mode',
+        'mobile-mode'
+    );
 
-        document.body.classList.add('mobile-view');
 
-        mobileBtn.classList.add('active');
+    document.body.classList.add(view + '-mode');
 
-        desktopBtn.classList.remove('active');
 
-      } else {
+    desktopBtn.classList.toggle(
+        'active',
+        view === 'desktop'
+    );
 
-        document.body.classList.remove('mobile-view');
 
-        desktopBtn.classList.add('active');
+    mobileBtn.classList.toggle(
+        'active',
+        view === 'mobile'
+    );
 
-        mobileBtn.classList.remove('active');
 
-      }
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 
-    }
+}
 
-  </script>
+
+/* DEFAULT VIEW */
+
+setView('desktop');
+
+</script>
 
 </body>
 </html>
